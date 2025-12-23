@@ -2,12 +2,14 @@
 import * as HomeScreen from "./home.js";
 import * as ProfileScreen from "./profile.js";
 import * as FeedScreen from "./feed.js";
+import * as UniversalAIScreen from "./universal_ai.js";
 
 // Registry of connected screens
 export const registry = {
   home: HomeScreen,
   profile: ProfileScreen,
   feed: FeedScreen,
+  universal_ai: UniversalAIScreen, // correct key
 };
 
 export function render() {

@@ -47,6 +47,12 @@ export function initUI() {
   content.id = "content";
   app.appendChild(content);
 
+  const universalAiBtn = document.createElement("button");
+  universalAiBtn.className = "icon-btn";
+  universalAiBtn.dataset.screen = "universal_ai"; // must match registry key
+  universalAiBtn.textContent = "🤖"; // AI icon
+  nav.appendChild(universalAiBtn);
+
   let current = null;
 
   function loadScreen(name) {
@@ -81,13 +87,13 @@ nav.appendChild(feedBtn);
 
 
   // Icon click handling (include all icons)
-[homeBtn, settingsBtn, profileBtn, feedBtn].forEach(btn => {
-  btn.addEventListener("click", () => {
-    [homeBtn, settingsBtn, profileBtn, feedBtn].forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    loadScreen(btn.dataset.screen);
+  [homeBtn, settingsBtn, profileBtn, feedBtn, universalAiBtn].forEach(btn => {
+    btn.addEventListener("click", () => {
+      [homeBtn, settingsBtn, profileBtn, feedBtn, universalAiBtn].forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      loadScreen(btn.dataset.screen);
+    });
   });
-});
 
 
   // Boot default
