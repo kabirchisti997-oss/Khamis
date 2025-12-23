@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "public/index.html", "use": "@vercel/static" },
+    { "src": "public/login.html", "use": "@vercel/static" },
+    { "src": "public/screen.html", "use": "@vercel/static" },
+    { "src": "public/ui.html", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "public/index.html" },
+    { "src": "/login", "dest": "public/login.html" },
+    { "src": "/screen", "dest": "public/screen.html" },
+    { "src": "/ui", "dest": "public/ui.html" }
+  ]
+}

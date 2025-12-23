@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AL KHAMIS</title>
+  <style>
+    body { margin:0; overflow:hidden; background:#000; color:cyan; font-family:sans-serif; }
+    canvas { position:absolute; top:0; left:0; z-index:0; }
+    .center { 
+      position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); 
+      z-index:1; text-align:center; display:flex; flex-direction:column; align-items:center; gap:20px;
+    }
+    h1 { font-size:3rem; letter-spacing:4px; cursor:pointer; text-shadow:0 0 20px cyan; margin:0; }
+    button { background:black; border:1px solid cyan; color:cyan; padding:10px 20px; cursor:pointer; box-shadow:0 0 10px cyan; text-transform:uppercase; letter-spacing:1px; transition:0.3s; }
+    button:hover { background:cyan; color:black; box-shadow:0 0 20px cyan; }
+  </style>
+</head>
+<body>
+  <canvas id="particles"></canvas>
+  <div class="center">
+    <h1 id="enter-btn">AL KHAMIS</h1>
+  </div>
+  <script type="module">
+    import { initParticles } from "../al_khamis/startup.js";
+    initParticles();
+    document.getElementById('enter-btn').onclick = () => window.location.href = 'ui.html';
+  </script>
+</body>
+</html>
