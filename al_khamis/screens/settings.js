@@ -3,6 +3,8 @@ import * as HomeScreen from "./home.js";
 import * as ProfileScreen from "./profile.js";
 import * as FeedScreen from "./feed.js";
 import * as UniversalAIScreen from "./universal_ai.js";
+import * as SettingsScreen from "./settings.js";
+import { createNavbar } from "./navbar.js";
 
 // Registry of connected screens
 export const registry = {
@@ -10,6 +12,7 @@ export const registry = {
   profile: ProfileScreen,
   feed: FeedScreen,
   universal_ai: UniversalAIScreen, // correct key
+  settings: SettingsScreen,
 };
 
 export function render() {
@@ -19,6 +22,8 @@ export function render() {
   wrap.style.height = "100%";
   wrap.style.color = "cyan";
   wrap.style.padding = "20px";
+
+  wrap.appendChild(createNavbar());
 
   // Title
   const title = document.createElement("h1");

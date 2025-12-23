@@ -21,9 +21,14 @@
     <h1 id="enter-btn">AL KHAMIS</h1>
   </div>
   <script type="module">
-    import { initParticles } from "../al_khamis/startup.js";
+    import { initParticles } from "./al_khamis/screens/startup.js"; 
+    // ✅ absolute path so Vercel can serve it
+
     initParticles();
-    document.getElementById('enter-btn').onclick = () => window.location.href = 'ui.html';
+
+    document.getElementById('enter-btn').onclick = () => {
+      window.location.href = "/ui.html"; // ✅ ui.html inside public
+    };
   </script>
 </body>
 </html>

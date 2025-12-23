@@ -1,4 +1,6 @@
 // al_khamis/screens/home.js
+import { createNavbar } from "./navbar.js";
+
 export function render() {
   const wrap = document.createElement("div");
   wrap.style.position = "relative";
@@ -6,6 +8,8 @@ export function render() {
   wrap.style.height = "100%";
   wrap.style.color = "cyan";
   wrap.style.padding = "20px";
+
+  wrap.appendChild(createNavbar());
 
   const title = document.createElement("h1");
   title.textContent = "Home Screen";
