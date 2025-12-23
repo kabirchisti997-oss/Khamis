@@ -1,31 +1,76 @@
-// al_khamis/startup.js
-export function initParticles() {
-  const canvas = document.getElementById("particles");
-  const ctx = canvas.getContext("2d");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+import { initUI } from './ui.js';
+import { initInteractions } from './screens/universal_ai.js';
+import { renderHome } from './screens/home.js';
 
-  const particles = Array.from({ length: 100 }, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    radius: Math.random() * 2,
-    dx: (Math.random() - 0.5) * 1.5,
-    dy: (Math.random() - 0.5) * 1.5,
-  }));
+let canvas, ctx;
+let particles = [];
 
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "cyan";
-    particles.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fill();
-      p.x += p.dx;
-      p.y += p.dy;
-      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-    });
-    requestAnimationFrame(draw);
-  }
-  draw();
+function resize() {
+    if (canvas) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
 }
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+    }
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+    }
+    draw() {
+        ctx.fillStyle = '#00ffff';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Auto-generate DOM structure if missing
+    if (!document.getElementById('particles')) {
+        const c = document.createElement('canvas');
+        c.id = 'particles';
+        document.body.appendChild(c);
+    }
+    if (!document.getElementById('sidebar')) {
+        const s = document.createElement('div');
+        s.id = 'sidebar';
+        document.body.appendChild(s);
+    }
+    if (!document.getElementById('main-content')) {
+        const m = document.createElement('div');
+        m.id = 'main-content';
+        document.body.appendChild(m);
+    }
+
+    canvas = document.getElementById('particles');
+    if (canvas) {
+        ctx = canvas.getContext('2d');
+        resize();
+        window.addEventListener('resize', resize);
+        for (let i = 0; i < 100; i++) particles.push(new Particle());
+        animate();
+    }
+
+    initUI();
+    initInteractions();
+    const main = document.getElementById('main-content');
+    if (main) main.innerHTML = renderHome();
+});

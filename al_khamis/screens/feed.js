@@ -1,73 +1,13 @@
-// al_khamis/screens/feed.js
-import { createNavbar } from "./navbar.js";
+export const icon = `<svg class="nav-icon" data-target="feed" viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>`;
 
-export function render() {
-  const wrap = document.createElement("div");
-  wrap.style.color = "cyan";
-  wrap.style.padding = "20px";
-
-  wrap.appendChild(createNavbar());
-
-  const title = document.createElement("h1");
-  title.textContent = "Institute Feed";
-  title.style.textShadow = "0 0 12px cyan";
-  wrap.appendChild(title);
-
-  const info = document.createElement("p");
-  info.textContent = "Share future updates here:";
-  wrap.appendChild(info);
-
-  // Input field
-  const input = document.createElement("input");
-  input.type = "text";
-  input.placeholder = "Type your update...";
-  input.style.width = "60%";
-  input.style.padding = "10px";
-  input.style.marginTop = "10px";
-  input.style.border = "1px solid cyan";
-  input.style.background = "black";
-  input.style.color = "cyan";
-  input.style.textShadow = "0 0 8px cyan";
-  wrap.appendChild(input);
-
-  // Submit button
-  const button = document.createElement("button");
-  button.textContent = "Post Update";
-  button.style.marginLeft = "10px";
-  button.style.padding = "10px 20px";
-  button.style.border = "1px solid cyan";
-  button.style.background = "transparent";
-  button.style.color = "cyan";
-  button.style.cursor = "pointer";
-  button.style.textShadow = "0 0 8px cyan";
-  button.onmouseenter = () => button.style.background = "rgba(0,255,255,0.1)";
-  button.onmouseleave = () => button.style.background = "transparent";
-  wrap.appendChild(button);
-
-  // Updates list
-  const updatesList = document.createElement("div");
-  updatesList.style.marginTop = "20px";
-  updatesList.style.display = "flex";
-  updatesList.style.flexDirection = "column";
-  updatesList.style.gap = "10px";
-  wrap.appendChild(updatesList);
-
-  // Button click → add update
-  button.onclick = () => {
-    const text = input.value.trim();
-    if (text) {
-      const update = document.createElement("div");
-      update.textContent = text;
-      update.style.border = "1px solid cyan";
-      update.style.padding = "8px";
-      update.style.textShadow = "0 0 8px cyan";
-      updatesList.appendChild(update);
-      input.value = "";
-    }
-  };
-
-  wrap.cleanup = () => {};
-  return wrap;
+export function renderFeed() {
+    return `
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <svg style="width: 150px; height: 150px; fill: none; stroke: #00ffff; stroke-width: 2;" viewBox="0 0 24 24">
+                <path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/>
+                <path d="M8 10l-2 2 2 2M16 10l2 2-2 2M12 13l-1-4h2l-1 4" stroke-width="1" />
+            </svg>
+            <h1 style="color: #00ffff; margin-top: 20px; font-family: monospace;">COMING SOON</h1>
+        </div>
+    `;
 }
-
-export function cleanup() {}
