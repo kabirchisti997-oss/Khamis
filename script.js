@@ -74,21 +74,37 @@ animate();
 // Navigation Logic
 const navHome = document.getElementById('nav-home');
 const navAi = document.getElementById('nav-ai');
+const navFeed = document.getElementById('nav-feed');
 const homeInterface = document.getElementById('home-interface');
 const aiInterface = document.getElementById('ai-interface');
+const feedInterface = document.getElementById('feed-interface');
 
 navHome.addEventListener('click', () => {
     navHome.classList.add('active');
     navAi.classList.remove('active');
+    navFeed.classList.remove('active');
     
     homeInterface.classList.remove('hidden');
     aiInterface.classList.add('hidden');
+    feedInterface.classList.add('hidden');
 });
 
 navAi.addEventListener('click', () => {
     navAi.classList.add('active');
     navHome.classList.remove('active');
+    navFeed.classList.remove('active');
     
     aiInterface.classList.remove('hidden');
     homeInterface.classList.add('hidden');
+    feedInterface.classList.add('hidden');
+});
+
+navFeed.addEventListener('click', () => {
+    navFeed.classList.add('active');
+    navHome.classList.remove('active');
+    navAi.classList.remove('active');
+    
+    feedInterface.classList.remove('hidden');
+    homeInterface.classList.add('hidden');
+    aiInterface.classList.add('hidden');
 });
