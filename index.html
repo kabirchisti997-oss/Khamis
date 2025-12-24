@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini AI Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- The Sidebar -->
+    <nav class="sidebar">
+        <div class="nav-item active" id="nav-home" title="Home">
+            <!-- Home Icon SVG -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </div>
+        
+        <div class="nav-item" id="nav-ai" title="AI Assistant">
+            <!-- AI / Sparkle Icon SVG -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+            </svg>
+            <span class="nav-text">AI</span>
+        </div>
+    </nav>
+
+    <!-- The Particle Background -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Home Interface -->
+    <div id="home-interface" class="interface">
+        <h1>Coming Soon</h1>
+    </div>
+
+    <!-- Chat Interface -->
+    <main id="ai-interface" class="chat-interface hidden">
+        <div class="chat-history" id="chatHistory">
+            <div class="message ai-message">
+                Hello! I am your AI assistant. How can I help you today?
+            </div>
+        </div>
+        
+        <div class="chat-input-container">
+            <input type="text" id="userInput" placeholder="Type a message to AI...">
+            <button id="sendButton">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+        </div>
+    </main>
+
+    <script src="ai_brain.js"></script>
+    <script src="ai.js"></script>
+    <script src="script.js"></script>
+    <script src="home.js"></script>
+</body>
+</html>
