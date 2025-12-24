@@ -32,6 +32,23 @@ body {
     z-index: 100;
 }
 
+.ai-text {
+    font-size: 32px;
+    font-weight: 900;
+    color: #00ffff;
+    text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.ai-text:hover {
+    transform: scale(1.2);
+    text-shadow: 0 0 25px #00ffff, 0 0 50px #00ffff;
+}
+
 .nav-icon {
     width: 40px;
     height: 40px;
